@@ -1,6 +1,6 @@
 # macnificos-nuxt-demo
 
-Command for generating the new app:
+Command used for generating the new app:
 
 ```bash
 $ yarn create nuxt-app macnificos-nuxt-demo
@@ -25,6 +25,15 @@ create-nuxt-app v3.7.1
 ? What is your GitHub username? josepcrespo
 ? Version control system: Git
 ```
+
+## Quick Start
+
+```bash
+docker-compose build --no-cache --force-rm && docker-compose up
+
+```
+
+Wait until you can see "Listening on: http:// …" on the last line of the shell. Then you can open your favorite web browser at [http://localhost:3000/](http://localhost:3000/).
 
 ## Build Setup
 

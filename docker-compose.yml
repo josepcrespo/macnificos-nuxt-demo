@@ -1,0 +1,21 @@
+version: '2.4'
+
+services:
+  node_server:
+    image: node:lts-alpine
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./dockerfiles/node_runtime/Dockerfile
+    environment:
+        - NUXT_HOST=0.0.0.0
+        - NUXT_PORT=3000
+    volumes:
+        - './:/usr/src/app'
+        - '/usr/src/app/node_modules'
+    ports:
+        # <Port exposed> : <Node.js Port running inside container>
+        - '3000:3000'
+    expose:
+        # Opens port 3000 on the container
+        - '3000'
