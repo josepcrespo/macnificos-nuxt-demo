@@ -6,7 +6,7 @@ Command for generating the new app:
 $ yarn create nuxt-app macnificos-nuxt-demo
 ```
 
-Options choosen on the `yarn create nuxt-app` command wizard:
+Options chosen on the `yarn create nuxt-app` command wizard:
 
 ```bash
 create-nuxt-app v3.7.1
