@@ -1,5 +1,31 @@
 # macnificos-nuxt-demo
 
+Command for generating the new app:
+
+```bash
+$ yarn create nuxt-app macnificos-nuxt-demo
+```
+
+Options choosen on the `yarn create nuxt-app` command wizard:
+
+```bash
+create-nuxt-app v3.7.1
+✨  Generating Nuxt.js project in macnificos-nuxt-demo
+? Project name: macnificos-nuxt-demo
+? Programming language: JavaScript
+? Package manager: Yarn
+? UI framework: Vuetify.js
+? Nuxt.js modules: Axios - Promise based HTTP client, Progressive Web App (PWA)
+? Linting tools: ESLint, StyleLint
+? Testing framework: Jest
+? Rendering mode: Universal (SSR / SSG)
+? Deployment target: Server (Node.js hosting)
+? Development tools: Dependabot (For auto-updating dependencies, GitHub only)
+? Continuous integration: None
+? What is your GitHub username? josepcrespo
+? Version control system: Git
+```
+
 ## Build Setup
 
 ```bash
