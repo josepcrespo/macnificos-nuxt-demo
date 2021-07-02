@@ -74,7 +74,6 @@ docker-compose build --no-cache --force-rm && docker-compose up
 
 Wait until you can see "Listening on: http:// …" on the last line of the shell. Then you can open your favorite web browser at [http://localhost:3000/](http://localhost:3000/).
 
-
 ## Docker start
 
 If you already built the Docker images, containers, volumes, network, etc, and only needs to start the enviroment:
@@ -84,9 +83,7 @@ docker-compose up
 ```
 
 You will see something like this:
-
 ![docker-compose up](readme/img/docker-compose-up.png)
-
 and you can interact with the app at [http://localhost:3000/](http://localhost:3000/)
 
 ## Local Setup
