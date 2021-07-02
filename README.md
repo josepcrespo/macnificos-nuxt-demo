@@ -1,12 +1,38 @@
 # macnificos-nuxt-demo
 
-Command used for generating the new app:
+## Problem domain
+
+We have an API endpoint that returns a one level JSON object where each property name is a category ID and, it stores an array of other category IDs. This array of category IDs are sub-categories.
+
+So, if we recive a JSON like this from the API:
+
+```json
+{
+    1: [11, 12],
+    2: [21, 22, 23],
+    3: [201],
+    4: [],
+    12: [101],
+    21: [101],
+    23: [201],
+    101: [1001, 1002],
+    1002: [10001, 10002, 10003]
+}
+```
+
+We should build a categories tree like this:
+
+![Categories Tree](readme/img/categories-tree.png)
+
+## Information about the app generation wizard
+
+We used the following command for generating the new app:
 
 ```bash
 $ yarn create nuxt-app macnificos-nuxt-demo
 ```
 
-Options chosen on the `yarn create nuxt-app` command wizard:
+Then, we chosen the following options from the command wizard:
 
 ```bash
 create-nuxt-app v3.7.1
@@ -28,14 +54,44 @@ create-nuxt-app v3.7.1
 
 ## Quick Start
 
+1. Clone the project on your computer:
+
+```bash
+git clone https://github.com/josepcrespo/macnificos-nuxt-demo.git
+```
+
+2. Change to the new project directory:
+
+```bash
+cd macnificos-nuxt-demo
+```
+
+3. Build and, start the Docker environment
+
 ```bash
 docker-compose build --no-cache --force-rm && docker-compose up
-
 ```
 
 Wait until you can see "Listening on: http:// …" on the last line of the shell. Then you can open your favorite web browser at [http://localhost:3000/](http://localhost:3000/).
 
-## Build Setup
+
+## Docker start
+
+If you already built the Docker images, containers, volumes, network, etc, and only needs to start the enviroment:
+
+```bash
+docker-compose up
+```
+
+You will see something like this:
+
+![docker-compose up](readme/img/docker-compose-up.png)
+
+and you can interact with the app at [http://localhost:3000/](http://localhost:3000/)
+
+## Local Setup
+
+If you don't want a full Docker environment, here you have a list of commands for developing directly on your computer:
 
 ```bash
 # install dependencies
