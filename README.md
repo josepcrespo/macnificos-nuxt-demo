@@ -1,6 +1,31 @@
-# macnificos-nuxt-demo
+# Macnificos Nuxt Demo
 
-## Problem domain
+Table of contents:
+
+- [Macnificos Nuxt Demo](#macnificos-nuxt-demo)
+    * [Live Version](#live-version)
+    * [Problem Domain](#problem-domain)
+    * [Information About The App Generation Wizard](#Information-about-the-app-generation-wizard)
+    * [Quick Start](#quick-start)
+    * [Start Docker](#start-docker)
+    * [Local Setup](#local-setup)
+    * [Special Directories](#special-directories)
+        + [assets](#assets)
+        + [components](#components)
+        + [layouts](#layouts)
+        + [layouts](#layouts)
+        + [pages](#pages)
+        + [plugins](#plugins)
+        + [static](#static)
+        + [store](#store)
+
+## Live Version
+
+A live version has been deployed on the Heroku Cloud Application Platform, check it!
+
+[https://macnificos-nuxt-demo.herokuapp.com/](https://macnificos-nuxt-demo.herokuapp.com/)
+
+## Problem Domain
 
 We have an API endpoint that returns a one level JSON object where each property name is a category ID and, it stores an array of other category IDs. This array of category IDs are sub-categories.
 
@@ -24,7 +49,7 @@ We should build a categories tree like this:
 
 ![Categories Tree](readme/img/categories-tree.png)
 
-## Information about the app generation wizard
+## Information About The App Generation Wizard
 
 We used the following command for generating the new app:
 
@@ -74,7 +99,7 @@ docker-compose build --no-cache --force-rm && docker-compose up
 
 Wait until you can see "Listening on: http:// …" on the last line of the shell. Then you can open your favorite web browser at [http://localhost:3000/](http://localhost:3000/).
 
-## Docker start
+## Start Docker
 
 If you already built the Docker images, containers, volumes, network, etc, and only needs to start the enviroment:
 
