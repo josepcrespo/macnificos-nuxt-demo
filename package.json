@@ -35,5 +35,8 @@
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "vue-jest": "^3.0.4"
-  }
+  },
+  "engines": {
+    "node": "14.17.1"
+  },
 }
