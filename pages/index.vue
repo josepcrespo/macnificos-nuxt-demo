@@ -6,11 +6,36 @@
     >
       Árbol resultado de las categorías y subcategorías obtenidas de la API.
     </v-col>
+    <v-col
+      class="text-center"
+      cols="12"
+    >
+      <code>
+        {{ JSON.parse(JSON.stringify(this.categoriesFromApi)) }}
+      </code>
+    </v-col>
     <v-col cols="12">
       <v-treeview
         :items="categoriesTree"
         dense
       />
+      <v-snackbar
+        v-model="snackbar.model"
+        :multi-line="true"
+      >
+        {{ snackbar.text }}
+        <template #action="{ attrs }">
+          <v-btn
+            color="red"
+            text
+            timeout="snackbar.timeout"
+            v-bind="attrs"
+            @click="snackbar.model = false"
+          >
+            Cerrar
+          </v-btn>
+        </template>
+      </v-snackbar>
     </v-col>
   </v-row>
 </template>
@@ -24,7 +49,12 @@ export default {
       categoriesTree: [],
       categoryObjects: [],
       getCategoryObjectsPromise: undefined,
-      getCategoriesPromise: this.getCategories()
+      getCategoriesPromise: this.getCategories(),
+      snackbar: {
+        model: false,
+        text: 'Error con la API de categorías. El servicio devuelve el siguiente mensaje: ',
+        timeout: 8000
+      }
     }
   },
   mounted () {
@@ -36,33 +66,31 @@ export default {
       await this.getCategoryObjectsPromise
 
       // https://stackoverflow.com/a/55362597/2332731
-      const categoryArr1 = JSON.parse(JSON.stringify(this.categoryObjects))
-      const categoryArr2 = categoryArr1
+      const categoriesArr1 = JSON.parse(JSON.stringify(this.categoryObjects))
+      const categoriesArr2 = categoriesArr1
 
-      categoryArr1.forEach((catFromArr1, index1) => {
-        categoryArr2.forEach((catFromArr2, index2) => {
+      categoriesArr1.forEach((catFromArr1, index1) => {
+        categoriesArr2.forEach((catFromArr2, index2) => {
           if ('children' in catFromArr1) {
             const results = catFromArr1.children.map((child) => {
               const attachChild = (child.id === catFromArr2.id)
               if (attachChild) {
-                categoryArr1[index2].rootCategory = false
+                categoriesArr1[index2].rootCategory = false
               }
               return attachChild ? catFromArr2 : child
             })
-            categoryArr1[index1].children = results
+            categoriesArr1[index1].children = results
           }
         })
       })
 
-      const onlyRootCategories = categoryArr1.filter((category, index, arr) => {
+      this.categoriesTree = categoriesArr1.filter((category) => {
         return category.rootCategory !== false
       })
-
-      this.categoriesTree = onlyRootCategories
     },
     /**
-     * Returns a categories array of objects properly formated for displaying the
-     * tree in the DOM with the Vuetify `v-treeview` component.
+     * Returns a categories array of objects properly formated for displaying
+     * the tree in the DOM with the Vuetify `v-treeview` component.
      */
     async getCategoryObjects () {
       await this.getCategoriesPromise
@@ -145,6 +173,8 @@ export default {
         .catch((error) => {
           /* eslint-disable-next-line no-console */
           console.error(error)
+          this.snackbar.model = true
+          this.snackbar.text += error.message
         })
     }
   }
