@@ -4,15 +4,21 @@
       class="text-center"
       cols="12"
     >
-      Árbol resultado de las categorías y subcategorías obtenidas de la API.
+      Categorías devueltas por una API externa.
     </v-col>
     <v-col
       class="text-center"
       cols="12"
     >
       <code>
-        {{ JSON.parse(JSON.stringify(this.categoriesFromApi)) }}
+        {{ JSON.parse(JSON.stringify(categoriesFromApi)) }}
       </code>
+    </v-col>
+    <v-col
+      class="text-center"
+      cols="12"
+    >
+      Árbol resultado de las categorías y subcategorías.
     </v-col>
     <v-col cols="12">
       <v-treeview
